@@ -1,0 +1,32 @@
+{% extends "form.html" %}
+
+{% block heading %}
+	Flack
+{% endblock %}
+
+{% block js_file %}
+	<script src="{{url_for('static', filename='chatroom.js')}}"></script>
+{% endblock %}
+
+{% block style %}
+.time {
+	font-size: 8px;
+	margin-top: 0em;
+}
+{% endblock %}
+
+{% block form %}
+	<h1>Chatroom: {{name}}</h1>
+	<div>
+		<input name="text_msg" type="text">
+		<button>Send Message</button>
+	</div>
+	<br>
+	<div id="messages">
+		{% for m in msgs %}
+			<p><strong>{{m.user}}:</strong> {{m.msg}}</p>
+			<p class="time">{{m.time[0]}}-{{m.time[1]}}-{{m.time[2]}} {{m.time[3]}}:{{m.time[4]}}</p>
+		{% endfor %}
+	</div>
+	<a href="{{url_for('logout')}}"><button style="position:absolute;top:10px;right:10px">Logout</button></a>
+{% endblock %}

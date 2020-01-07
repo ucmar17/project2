@@ -1,0 +1,19 @@
+{% extends "form.html" %}
+
+{% block heading %}
+	Flack
+{% endblock %}
+
+{% block js_file %}
+	<script src="{{url_for('static', filename='index.js')}}"></script>
+{% endblock %}
+
+{% block form %}
+	<h1 id="h1">Welcome to Flack</h1>
+	<br/>
+	<form id="username_form" method="post" action="{{url_for('channels')}}">
+		<text>Enter Display Name: </text>
+		<input type="text" id="username_input" name="name">
+		<button type="submit">Submit</button>
+	</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "form.html" %}
+
+{% block heading %}
+	Flack
+{% endblock %}
+
+{% block js_file %}
+	<script src="{{url_for('static', filename='channel.js')}}"></script>
+{% endblock %}
+
+{% block form %}
+	<h1>Welcome {{username}}</h1>
+	<p>Create a Channel or click on an existing channel to join</p>
+	<div>
+		<input name="channel_name" type="text">
+		<button>Create Channel</button>
+		<p id="choose" style="visibility:hidden;size:8px;">Please choose a channel name that does not exist</p>
+	</div>
+	<div id="channels_list">
+		{% for c in channels: %}
+			<a href="{{url_for('chatroom', identi=c)}}">{{c}} - {{channels[c]}}</a>
+			<br>
+		{% endfor %}
+	</div>
+	<a href="{{url_for('logout')}}"><button style="position:absolute;top:10px;right:10px">Logout</button></a>
+{% endblock %}
